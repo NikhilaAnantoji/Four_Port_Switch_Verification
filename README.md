@@ -1,63 +1,72 @@
-Four-Port Switch Project
-This repository contains a series of labs and materials aimed at building and verifying a Four-Port Switch using object-oriented and verification concepts.
+Four-Port Switch Verification Environment (SystemVerilog)
 
-Table of Contents
-Project Overview
+This project implements a complete SystemVerilog class-based verification environment for a Four-Port Switch design.
+It focuses on building packet models, extending them into different packet types, constructing verification components, and integrating them with a SystemVerilog testbench to verify packet routing functionality.
 
-Lab 1: Simple Data Class Declaration
+Project Description
 
-Lab 2: Simple Randomization and Constraints
+The switch receives packets on one port and forwards them to one or more output ports depending on the destination encoded in the packet.
+This repository contains all the SystemVerilog components required to model, generate, drive, observe, and check these packets.
 
-Lab 3: Static Properties and Methods (Optional)
+The work includes:
 
-Lab 4: Inheritance and Polymorphism
+Packet Modeling
 
-Lab 5: Component Hierarchy
+A base packet class containing source, target, and payload fields.
 
-Lab 6: Completing the Verification Component
+Constrained randomization for legal packet generation.
 
-Project Overview
-The Four-Port Switch Project introduces the principles of data modeling, object-oriented programming, and verification methodology. The labs are designed to build upon each other, culminating in a verification-ready four-port switch model.
+Classification of packets into single-cast, multicast, and broadcast types.
 
-Lab 1: Simple Data Class Declaration
-This lab focuses on creating a simple data class to represent packets. You will learn:
+Support functions for printing and identifying packet information.
 
-How to declare classes
+Object-Oriented Extensions
 
-Defining properties and methods
+Subclasses for different packet types with their own constraints.
 
-Basic object-oriented programming constructs
+Polymorphic creation of packets using random selection.
 
-Lab 2: Simple Randomization and Constraints
-In this lab, you’ll explore:
+Debug support such as tagging and type reporting.
 
-Random variable declaration
+Verification Component Architecture
 
-Applying constraints to limit the random values
+Component base class with naming, hierarchy, and utility functions.
 
-Validating randomized object behavior
+Sequencer for controlled packet generation.
 
-Lab 3: Static Properties and Methods (Optional)
-(Optional) This lab demonstrates:
+Driver for applying packets to the DUT interface.
 
-Defining and using static variables
+Monitor for observing DUT outputs.
 
-Creating static methods to track or manage shared data
+Agent bundling sequencer, driver, and monitor.
 
-Lab 4: Inheritance and Polymorphism
-You will learn:
+A top-level verification component integrating all subcomponents.
 
-How to use inheritance to extend base classes
+Interface Integration
 
-Applying polymorphism for method overriding
+SystemVerilog interface for switch port signals.
 
-Reusability and modular design
+Driver uses the interface to drive packets.
 
-Lab 5: Component Hierarchy
-This lab introduces component-based modeling:
+Monitor uses the interface to collect output packets.
 
-Building hierarchical structures
+Testbench Integration
 
+A structured module for instantiating the interface and the verification component.
+
+Configuration of virtual interfaces and port numbers.
+
+Running the verification component to generate and observe traffic.
+
+Support for testing a single port or multiple ports.
+
+DUT-Level Verification
+
+A testbench connecting the verification component to all four switch ports.
+
+Monitoring outputs from all ports in parallel.
+
+Checking routing correctness and verifying behavior for different packet types.
 Organizing verification components
 
 Understanding simulation components and their interactions
